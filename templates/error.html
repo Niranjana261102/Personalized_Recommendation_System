@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Error - Movie Recommendation System{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5 mb-5">
+    <div class="error-container">
+        <i class="fas fa-exclamation-triangle fa-5x text-danger mb-4"></i>
+        <h1 class="display-4">Oops! Something went wrong</h1>
+        <p class="lead">{{ error_message or "An unexpected error occurred while processing your request." }}</p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="{{ url_for('index') }}">
+            <i class="fas fa-home me-2"></i>Return Home
+        </a>
+    </div>
+</div>
+{% endblock %}

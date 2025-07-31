@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Home - Movie Recommendation System{% endblock %}
+{% block content %}
+<div class="hero-section text-center mb-5">
+    <h1 class="display-4 mb-3">Discover Your Next Favorite Movie</h1>
+    <p class="lead">Get personalized movie recommendations based on your preferences</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0">
+                    <i class="fas fa-search me-2"></i>Get Recommendations
+                </h3>
+            </div>
+            <div class="card-body">
+                <form id="recommendationForm" action="{{ url_for('get_recommendations') }}" method="POST">
+                    <div class="mb-3">
+                        <label for="user_id" class="form-label">User ID</label>
+                        <input type="number" class="form-control" id="user_id" name="user_id" min="1" required>
+                        <div class="form-text">Enter your user ID to get personalized recommendations</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="algorithm" class="form-label">Recommendation Algorithm</label>
+                        <select class="form-select" id="algorithm" name="algorithm" required>
+                            <option value="">Choose an algorithm...</option>
+                            <option value="collaborative">Collaborative Filtering</option>
+                            <option value="content">Content-Based</option>
+                            <option value="hybrid">Hybrid Approach</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="num_recommendations" class="form-label">Number of Recommendations</label>
+                        <select class="form-select" id="num_recommendations" name="num_recommendations">
+                            <option value="5">5 movies</option>
+                            <option value="10" selected>10 movies</option>
+                            <option value="15">15 movies</option>
+                            <option value="20">20 movies</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                        <i class="fas fa-magic me-2"></i>Get Recommendations
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card h-100 feature-card">
+            <div class="card-body text-center">
+                <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Collaborative Filtering</h5>
+                <p class="card-text">Find movies loved by users with similar tastes</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 feature-card">
+            <div class="card-body text-center">
+                <i class="fas fa-tags fa-3x text-success mb-3"></i>
+                <h5 class="card-title">Content-Based</h5>
+                <p class="card-text">Discover movies similar to ones you've enjoyed</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 feature-card">
+            <div class="card-body text-center">
+                <i class="fas fa-star fa-3x text-warning mb-3"></i>
+                <h5 class="card-title">Hybrid Approach</h5>
+                <p class="card-text">Best of both worlds for optimal recommendations</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

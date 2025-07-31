@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Analytics - Movie Recommendation System{% endblock %}
+{% block content %}
+<h1 class="mb-4">System Analytics</h1>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4>{{ stats.total_movies if stats else '0' }}</h4>
+                        <p class="mb-0">Total Movies</p>
+                    </div>
+                    <i class="fas fa-film fa-2x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4>{{ stats.total_users if stats else '0' }}</h4>
+                        <p class="mb-0">Total Users</p>
+                    </div>
+                    <i class="fas fa-users fa-2x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4>{{ stats.total_ratings if stats else '0' }}</h4>
+                        <p class="mb-0">Total Ratings</p>
+                    </div>
+                    <i class="fas fa-star fa-2x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4>{{ "%.1f"|format(stats.avg_rating) if stats else '0.0' }}</h4>
+                        <p class="mb-0">Avg Rating</p>
+                    </div>
+                    <i class="fas fa-chart-line fa-2x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Top Rated Movies</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="topMoviesChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Genre Distribution</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="genreChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Rating Distribution</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="ratingChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
